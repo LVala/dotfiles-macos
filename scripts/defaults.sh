@@ -44,4 +44,5 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 defaults write com.apple.finder ShowStatusBar -bool false
+defaults write com.apple.finder NewWindowTargetPath -string "PfHm"
 

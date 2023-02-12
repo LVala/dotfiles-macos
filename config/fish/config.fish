@@ -7,6 +7,7 @@ set -gx PKG_CONFIG_PATH /opt/homebrew/Cellar/openssl@1.1/1.1.1l_1/lib/pkgconfig/
 
 if status is-interactive
     set_theme
+    set fish_greeting
     # TODO prompt
 end
 

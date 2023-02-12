@@ -29,3 +29,5 @@ echo "Starting services..."
 brew services start skhd
 brew services start yabai
 
+echo "Remember to change default shell with \`sudo sh -c 'echo /usr/local/bin/fish >> /etc/shells' && chsh -s \$(which fish)\`"
+

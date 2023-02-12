@@ -1,3 +1,5 @@
+#!/bin/sh
+
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true

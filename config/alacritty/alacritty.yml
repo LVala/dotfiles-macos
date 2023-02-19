@@ -7,14 +7,14 @@ import:
 
 window:
   padding:
-    x: 10 
+    x: 10
     y: 10
 
   dynamic_padding: false
 
-  decorations: buttonless 
-    
-  opacity: 0.975 
+  decorations: buttonless
+
+  opacity: 0.975
 
   title: Alacritty
   dynamic_title: true

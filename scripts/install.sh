@@ -24,4 +24,5 @@ brew services start skhd
 brew services start yabai
 
 echo "Remember to change default the shell with \`sudo sh -c 'echo /usr/local/bin/fish >> /etc/shells' && chsh -s \$(which fish)\`"
+echo "Remember to disable SIP and enable yabai scripting addition"
 

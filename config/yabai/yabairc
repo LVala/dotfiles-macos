@@ -1,56 +1,59 @@
 #!/usr/bin/env sh
 
-#
-# for this to work you must configure sudo such that
-# it will be able to run the command without password
-#
-# see this wiki page for information:
-#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
-#
-# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-# sudo yabai --load-sa
-#
+# scripting addition
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # exclude apps
 yabai -m rule --add app="^(Calculator|Software Update|System Preferences|System Settings|App Store|Activity Monitor|System Information)" manage=off
 
-# global settings
+# general/layout
 yabai -m config                                 \
-    debug_output                 off            \
-    external_bar                 off            \
-    mouse_follows_focus          off            \
-    focus_follows_mouse          autofocus      \
     window_origin_display        default        \
     window_placement             second_child   \
     window_zoom_persist          off            \
     window_topmost               off            \
-    window_shadow                on             \
+    split_ratio                  0.50           \
+    split_type                   auto           \
+    auto_balance                 off            \
+    layout                       bsp            \
+
+# mouse and focus
+yabai -m config                                 \
+    mouse_follows_focus          off            \
+    focus_follows_mouse          autofocus      \
+    mouse_modifier               fn             \
+    mouse_action1                move           \
+    mouse_action2                resize         \
+    mouse_drop_action            swap           \
+
+# opacity and animations
+yabai -m config                                 \
     window_opacity               off            \
     window_opacity_duration      0.0            \
     window_animation_duration    0.0            \
     window_animation_frame_rate  0              \
     active_window_opacity        1              \
     normal_window_opacity        1              \
+
+# shadows and borders
+yabai -m config                                 \
+    window_shadow                off            \
     window_border                on             \
     window_border_hidpi          on             \
     window_border_blur           off            \
-    window_border_width          10             \
-    window_border_radius         25             \
-    active_window_border_color   0xFF0000       \
-    normal_window_border_color   0x00FF00       \
-    insert_feedback_color        0x0000FF       \
-    split_ratio                  0.50           \
-    split_type                   auto           \
-    auto_balance                 off            \
-    mouse_modifier               fn             \
-    mouse_action1                move           \
-    mouse_action2                resize         \
-    mouse_drop_action            swap           \
-    layout                       bsp            \
-    top_padding                  0             \
-    bottom_padding               0             \
-    left_padding                 0             \
-    right_padding                0             \
-    window_gap                   0             \
+    window_border_width          1              \
+    active_window_border_color   0xaa7aa4a1     \
+    normal_window_border_color   0x447aa4a1     \
+    insert_feedback_color        0xff7aa4a1     \
+
+# padding and gaps
+yabai -m config                                 \
+    top_padding                  10             \
+    bottom_padding               10             \
+    left_padding                 10             \
+    right_padding                10             \
+    window_gap                   10             \
 
 echo "yabai configuration loaded.."
+

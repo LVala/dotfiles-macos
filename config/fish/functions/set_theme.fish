@@ -31,5 +31,11 @@ function set_theme
     set -g fish_pager_color_prefix $cyan
     set -g fish_pager_color_completion $foreground
     set -g fish_pager_color_description $comment
+    
+    # hydro prompt
+    set -g hydro_color_pwd $green 
+    set -g hydro_color_git $comment
+    set -g hydro_color_prompt $yellow
+    set -g hydro_color_duration $comment
 end
 

@@ -1,7 +1,12 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_jorgebucaran_2F_hydro_files:\x7e/\x2elocal/share/fish/functions/fish_mode_prompt\x2efish\x1e\x7e/\x2elocal/share/fish/functions/fish_prompt\x2efish\x1e\x7e/\x2elocal/share/fish/conf\x2ed/hydro\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR _hydro_git_2845:main\u2022\x20
+SETUVAR _hydro_git_4710:signaling\x2darch\x20
+SETUVAR _hydro_git_538:main\u2022\x20
 SETUVAR fish_color_autosuggestion:6d7f8b
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:a1cdd8

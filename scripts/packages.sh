@@ -1,4 +1,4 @@
-#!/bin/sh
+#/bin/sh
 
 brew tap homebrew/cask-fonts
 brew tap koekeishiya/formulae
@@ -37,4 +37,6 @@ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 asdf install erlang latest
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 asdf install elixir latest
+
+fisher update
 

@@ -7,7 +7,6 @@ brew install fish
 brew install fisher
 brew install htop
 brew install neovim
-brew install tmux
 brew install skhd
 brew install yabai
 brew install neofetch
@@ -37,6 +36,8 @@ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 asdf install erlang latest
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 asdf install elixir latest
+asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
+asdf install rust latest
 
 fisher update
 

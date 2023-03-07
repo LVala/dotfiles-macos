@@ -10,6 +10,7 @@ brew install neovim
 brew install skhd
 brew install yabai
 brew install neofetch
+brew install ripgrep  # for telescope.nvim
 
 brew install ffmpeg
 brew install srtp
@@ -38,6 +39,8 @@ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 asdf install elixir latest
 asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
 asdf install rust latest
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+adsf install nodejs latest
 
 fisher update
 

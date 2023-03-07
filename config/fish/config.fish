@@ -1,6 +1,7 @@
 # add Homebrew and asdf stuff to PATH
 eval (brew shellenv)
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
+fish_add_path /opt/homebrew/opt/openjdk/bin
 
 # paths to OpenSSL may differ between versions
 set -gx KERL_CONFIGURE_OPTIONS "--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
@@ -24,7 +25,6 @@ end
 alias clear='printf "\033c"'
 alias ls='ls --color=auto -Fh'
 alias ll='ls -la'
-alias v='nvim'
 
 if status is-interactive
     set fish_greeting 

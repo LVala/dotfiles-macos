@@ -4,16 +4,27 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     options = {
-      component_separators = { left = "", right = "" },
+      component_separators = "",
       section_separators = { left = "", right = "" },
     },
     sections = {
       lualine_a = {'mode'},
-      lualine_b = {'branch', 'diff', 'diagnostics'},
-      lualine_c = {'filename'},
-      lualine_x = {'encoding', 'fileformat', 'filetype'},
-      lualine_y = {'progress'},
-      lualine_z = {'location'}
+      lualine_b = {'branch', 'diff'},
+      lualine_c = {
+        {'filename', path = 1, symbols = {
+          modified = "󱇨",
+          readonly = "󰷋",
+          unnamed = "󰩌",
+          newfile = "󰻭",
+          },
+        },
+      },
+      lualine_x = { "diagnostics" },
+      lualine_y = { "filetype" },
+      lualine_z = {
+        { "location", icon = "󰆣" },
+        { "progress", icon="" }
+      },
     },
     inactive_sections = {
       lualine_a = {},
@@ -23,7 +34,11 @@ return {
       lualine_y = {},
       lualine_z = {}
     },
-    tabline = {},
+    tabline = {
+      lualine_b = {
+        {"tabs", mode = 2},
+      },
+    },
     winbar = {},
     inactive_winbar = {},
     extensions = {},

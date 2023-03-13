@@ -1,34 +1,58 @@
+local on_attach = function(_, bufnr)
+  local opts = { noremap=true, silent=true, buffer=bufnr }
+
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+  -- TODO rest keybindings
+end
+
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v1.x',
+  "neovim/nvim-lspconfig",
   dependencies = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
-
-    -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "hrsh7th/cmp-nvim-lsp",
+    { "j-hui/fidget.nvim", config=true },
   },
   config = function()
-    local lsp = require("lsp-zero").preset({
-      name = "minimal",
-      set_lsp_keymaps = true,
-      manage_nvim_cmp = true,
-      suggest_lsp_servers = false,
+    local opts = { noremap=true, silent=true }
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+
+    local servers = {
+      lua_ls = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          telemetry = {
+            enable = false,
+          },
+        },
+      },
+    }
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = { "lua_ls" },
     })
 
-    lsp.nvim_workspace()
-    lsp.setup()
-  end
+    require("mason-lspconfig").setup_handlers {
+      function (server_name)
+        require("lspconfig")[server_name].setup {
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = servers[server_name]
+        }
+      end,
+    }
+  end,
 }
 

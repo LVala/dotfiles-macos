@@ -2,6 +2,10 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function(_, opts)
+    vim.opt.showmode = false
+    require("lualine").setup(opts)
+  end,
   opts = {
     options = {
       component_separators = "",
@@ -11,7 +15,7 @@ return {
       lualine_a = {'mode'},
       lualine_b = {'branch', 'diff'},
       lualine_c = {
-        {'filename', path = 1, symbols = {
+        {'filename', symbols = {
           modified = "󱇨",
           readonly = "󰷋",
           unnamed = "󰩌",
@@ -36,10 +40,10 @@ return {
     },
     tabline = {
       lualine_b = {
-        {"tabs", mode = 2},
+        {"tabs", mode = 0},
       },
     },
-    winbar = {},
+    winbar = { lualine_c = {{"filename", path = 1}}},
     inactive_winbar = {},
     extensions = {},
   },
